@@ -8,7 +8,7 @@ int main()
 {
     // Getiing Card number from user as input
     std::string number;
-    std::cout << "#--------Credit card Validator----------#" << "\n";
+    std::cout << "\n#--------Credit card Validator----------#" << "\n";
     std::cout << "\n"
               << "Enter Your Credit Card Number : ";
     std::cin >> number;
@@ -19,19 +19,20 @@ int main()
     // Showing result
     if (isValid)
     {
-        std::cout << "\n The number " << number << " is a valid Credit Card Number";
+        std::cout << "\n The number " << number << " is a valid Credit Card Number\n";
     }
     else
     {
-        std::cout << "\n The number " << number << " is NOT a VAlid Credit Card Number";
+        std::cout << "\n The number " << number << " is NOT a VAlid Credit Card Number\n";
     }
+    std::cout<<"\n---------------------------------------------------";
 }
 
 bool checkValid(std::string number)
 {
     bool isEven = false;
     int sum = 0;
-    for (int i = 0; i < number.length(); i++)
+    for (int i = number.length()-1; i >=0; i--)
     {
         if (!isEven)
         {
@@ -39,10 +40,10 @@ bool checkValid(std::string number)
         }
         else
         {
-            int num = number[i] * 2;
+            int num = (number[i]-'0') * 2;
             if (num > 9)
             {
-                num = num % 10 + num / 10;
+                num = (num % 10) + (num/10%10);
             }
             sum += num;
         }
